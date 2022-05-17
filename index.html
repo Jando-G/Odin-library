@@ -4,11 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Book App</title>
+    <link rel="shortcut icon" href="./Assets/orange-square.png">
     <link rel="stylesheet" href="./styles.css">
     <script src="./javascript.js" defer></script>
 </head>
 <body>
-    
+    <div class="top">
+        <h1>Library</h1>
+        <img id="add" src="./Assets/plus.png">
+        <img src="./Assets/magnify.png">
+        <img src="./Assets/filter-outline.png">
+    </div>
+    <div class="shelve">
+    </div>
+    <div id="form-popup" class="hidden">
+        <form class="form-container">
+            <label for="title">Title</label>
+            <input type="text" placeholder="1984" name="title" required>
+            <label for="author">Author</label>
+            <input type="text" placeholder="George Orwell" name="author" required>
+            <label for="pages">pages</label>
+            <input type="number" placeholder="328" name="pages" required>
+            <div class="btn">Add Book</div>
+        </form>
+    </div>
+    <div id="overlay" class="hidden"></div>
 </body>
 </html>
