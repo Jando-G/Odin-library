@@ -13,34 +13,46 @@ function Book(title, author, pages) {
 
 let myLibrary = [];
 
-function addBookToLibrary(title, author, pages) {
+const shelve = document.getElementById("shelve");
+
+function refreshShelf() {
+    while(shelve.firstChild) {
+        shelve.removeChild(shelve.firstChild);
+    }       
+    for(let i = 0; i < myLibrary.length; i++) {
+        let newDiv = document.createElement("div");
+        newDiv.innerHTML = `<h3>${myLibrary[i].title}<h3> 
+        <h3>by ${myLibrary[i].author}<h3>
+        <p>${myLibrary[i].pages} pages<p>`;
+        shelve.appendChild(newDiv);
+    }
+}
+
+function addBook(title, author, pages) {
     myLibrary.push(new Book(title, author, pages));
 }
 
-addBookToLibrary("A test of tests", "Epstein", 69)
-addBookToLibrary("The book of books", "Jeff Valorant", 420)
-addBookToLibrary("The book of books", "Jeff Valorant", 420)
-addBookToLibrary("The book of books", "Jeff Valorant", 420)
-addBookToLibrary("The book of books", "Jeff Valorant", 420)
-addBookToLibrary("The book of books", "Jeff Valorant", 420)
-addBookToLibrary("A unique book", "JandoTopia.com", 420)
-addBookToLibrary("The book of books", "Jeff Valorant", 420)
-addBookToLibrary("The book of books", "Jeff Valorant", 420)
+addBook("A test of tests", "Epstein", 69)
+addBook("The book of books", "Jeff Valorant", 420)
+addBook("The book of books", "Jeff Valorant", 420)
+addBook("The book of books", "Jeff Valorant", 420)
+addBook("The book of books", "Jeff Valorant", 420)
+addBook("The book of books", "Jeff Valorant", 420)
+addBook("A unique book", "JandoTopia.com", 420)
+addBook("The book of books", "Jeff Valorant", 420)
+addBook("The book of books", "Jeff Valorant", 420)
 
+refreshShelf();
 
-const shelve = document.getElementsByClassName("shelve");
+document.getElementById('submit').addEventListener('click', ()=> {
+    if(document.getElementById('form-container').checkValidity()) {
+        addBook(document.getElementById('title').value,
+        document.getElementById('author').value,
+        document.getElementById('pages').value);
 
-document.querySelector("img").addEventListener('click', ()=> {
-
+        refreshShelf();
+    }
 });
-for(let i = 0; i < myLibrary.length; i++) {
-    let newDiv = document.createElement("div");
-    newDiv.innerHTML = `<h3>${myLibrary[i].title}<h3> 
-    <h3>by ${myLibrary[i].author}<h3>
-    <p>${myLibrary[i].pages} pages<p>`;
-    shelve[0].appendChild(newDiv);
-}
-
 document.getElementById('add').addEventListener('click', ()=> {
     document.getElementById('form-popup').classList.remove('hidden');
     document.getElementById('overlay').classList.remove('hidden');

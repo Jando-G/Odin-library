@@ -15,7 +15,7 @@ body {
     position: absolute;
     width: 100%;
 }
-.shelve {
+#shelve {
     display: grid;
     justify-content: center;
     gap: 1rem;
@@ -23,7 +23,7 @@ body {
     grid-template-columns: repeat(auto-fill, 20rem);
     grid-auto-rows: 20rem;
 }
-.shelve > div {
+#shelve > div {
     background-color: rgb(133, 92, 92);
 }
 #form-popup {
@@ -48,7 +48,7 @@ body {
 label, input {
     display: block;
 }
-.btn {
+#submit {
     background: green;
     color: rgb(241, 241, 241);
     width: 50%;

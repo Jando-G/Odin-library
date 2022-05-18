@@ -16,17 +16,17 @@
         <img src="./Assets/magnify.png">
         <img src="./Assets/filter-outline.png">
     </div>
-    <div class="shelve">
+    <div id="shelve">
     </div>
     <div id="form-popup" class="hidden">
-        <form class="form-container">
+        <form id="form-container">
             <label for="title">Title</label>
-            <input type="text" placeholder="1984" name="title" required>
+            <input type="text" placeholder="1984" id="title" name="title" required>
             <label for="author">Author</label>
-            <input type="text" placeholder="George Orwell" name="author" required>
+            <input type="text" placeholder="George Orwell" id="author" name="author" required>
             <label for="pages">pages</label>
-            <input type="number" placeholder="328" name="pages" required>
-            <div class="btn">Add Book</div>
+            <input type="number" placeholder="328" title="pages" id="pages" name="pages" required>
+            <input type="button" id="submit"></input>
         </form>
     </div>
     <div id="overlay" class="hidden"></div>
