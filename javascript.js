@@ -13,12 +13,6 @@ function Book(title, author, pages) {
     this.author = author;
     this.pages = pages;
     this.read = false;
-    this.info = function() { 
-        let sentence =  title + " by " + author + ", " + pages + ", ";
-        if(!this.read) sentence += "not read yet";
-        else sentence += "read ";
-        return sentence;
-    }
 }
 
 let myLibrary = [];
@@ -59,15 +53,10 @@ function addBook(title, author, pages) {
     myLibrary.push(new Book(title, author, pages));
 }
 
-addBook("A test of tests", "Epstein", 69)
-addBook("The book of books", "Jeff Valorant", 420)
-addBook("The book of books", "Jeff Valorant", 420)
-addBook("The book of books", "Jeff Valorant", 420)
-addBook("The book of books", "Jeff Valorant", 420)
-addBook("The book of books", "Jeff Valorant", 420)
-addBook("A unique book", "JandoTopia.com", 420)
-addBook("The book of books", "Jeff Valorant", 420)
-addBook("The book of books", "Jeff Valorant", 420)
+for(let i = 0; i < localStorage.length; i++) {
+    let str = localStorage.getItem(`book${i}`);
+    myLibrary[i] = JSON.parse(str);
+}
 
 refreshShelf();
 
@@ -89,3 +78,10 @@ document.getElementById('overlay').addEventListener('click', ()=> {
     document.getElementById('form-popup').classList.add('hidden');
     document.getElementById('overlay').classList.add('hidden');
     });
+window.onbeforeunload = ()=> {
+    localStorage.clear();
+    for(let i = 0; i < myLibrary.length; i++) {
+        let book = JSON.stringify(myLibrary[i]);
+        localStorage.setItem(`book${i}`, book);
+    }
+}
