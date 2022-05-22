@@ -11,22 +11,19 @@
 </head>
 <body>
     <div class="top">
+        <div></div>
         <h1>Library</h1>
-        <img src="./Assets/magnify.png">
         <img id="add" src="./Assets/plus.png">
-        <img src="./Assets/sort.png">
     </div>
     <div id="shelve">
     </div>
     <div id="form-popup" class="hidden">
         <form id="form-container">
-            <label for="title">Title</label>
-            <input type="text" placeholder="1984" id="title" name="title" required>
-            <label for="author">Author</label>
-            <input type="text" placeholder="George Orwell" id="author" name="author" required>
-            <label for="pages">pages</label>
-            <input type="number" placeholder="328" title="pages" id="pages" name="pages" required>
-            <input type="button" id="submit"></input>
+            <h1>Add a Book</h1>
+            <input type="text" placeholder="title" id="title" name="title" required>
+            <input type="text" placeholder="author" id="author" name="author" required>
+            <input type="number" placeholder="pages" title="pages" id="pages" name="pages"  min="1" max="99999" required>
+            <input type="button" value="add" id="submit"></input>
         </form>
     </div>
     <div id="overlay" class="hidden"></div>

@@ -17,12 +17,19 @@ function Book(title, author, pages) {
 
 let myLibrary = [];
 
+for(let i = 0; i < localStorage.length; i++) {
+    let str = localStorage.getItem(`book${i}`);
+    console.log(JSON.parse(str));
+    myLibrary[i] = JSON.parse(str);
+}
+
 const shelve = document.getElementById("shelve");
 
 function refreshShelf() {
     while(shelve.firstChild) {
         shelve.removeChild(shelve.firstChild);
-    }       
+    }   
+    if(myLibrary[0]) {    
     for(let i = 0; i < myLibrary.length; i++) {
         let newDiv = document.createElement("div");
         newDiv.innerHTML = `<div>
@@ -49,13 +56,15 @@ for(let i = 0; i < pages.length; i++) {
         })
     }
 }
+else {
+    let msg = document.createElement("h2");
+    msg.innerHTML = "(⌣_⌣”)<br>Your library is empty.<br>Click the \'+\' icon to add a new book.";
+    msg.setAttribute('id', 'emptyMsg');
+    shelve.appendChild(msg);
+}
+}
 function addBook(title, author, pages) {
     myLibrary.push(new Book(title, author, pages));
-}
-
-for(let i = 0; i < localStorage.length; i++) {
-    let str = localStorage.getItem(`book${i}`);
-    myLibrary[i] = JSON.parse(str);
 }
 
 refreshShelf();
@@ -65,8 +74,12 @@ document.getElementById('submit').addEventListener('click', ()=> {
         addBook(document.getElementById('title').value,
         document.getElementById('author').value,
         document.getElementById('pages').value);
-        
+
         refreshShelf();
+
+        document.getElementById('title').value = '';
+        document.getElementById('author').value = '';
+        document.getElementById('pages').value = '';
     }
 });
 document.getElementById('add').addEventListener('click', ()=> {
