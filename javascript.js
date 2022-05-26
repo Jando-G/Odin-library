@@ -6,13 +6,17 @@ function generateRandomColor() {
     }
     return color;
   }
-
-function Book(title, author, pages) {
+class Book {
+    constructor(title, author, pages) {
     this.title = title;
     this.color = generateRandomColor();
     this.author = author;
     this.pages = pages;
     this.read = false;
+    }
+}
+function addBook(title, author, pages) {
+    myLibrary.push(new Book(title, author, pages));
 }
 
 let myLibrary = [];
@@ -62,9 +66,6 @@ else {
     msg.setAttribute('id', 'emptyMsg');
     shelve.appendChild(msg);
 }
-}
-function addBook(title, author, pages) {
-    myLibrary.push(new Book(title, author, pages));
 }
 
 refreshShelf();
